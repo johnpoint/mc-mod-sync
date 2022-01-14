@@ -43,26 +43,22 @@ def get_mod():
     for i in update:
         if now_mod_map.__contains__(i["md5"]):
             print(
-                "+",
+                "\033[0;32m+",
                 i["md5"][0:7],
-                i["name"],
+                i["name"] + "\033[0m",
             )
             os.rename(now_mod_map[i["md5"]], i["name"])
             need_disable.pop(i["md5"])
         else:
-            print(
-                "↓",
-                i["md5"][0:7],
-                i["name"]
-            )
+            print("\033[0;33m↓", i["md5"][0:7], i["name"] + "\033[0m")
             download(sys.argv[2].replace("update.json", "") + i["md5"], i["name"])
     for k in need_disable:
         if ".disable" in need_disable[k]:
             continue
         print(
-            "-",
+            "\033[0;36mx",
             k[0:7],
-            need_disable[k].replace(".disable", "", -1),
+            need_disable[k].replace(".disable", "", -1) + "\033[0m",
         )
         os.rename(
             need_disable[k], need_disable[k].replace(".disable", "", -1) + ".disable"
