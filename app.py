@@ -86,7 +86,7 @@ def gen_zip():
 
     os.mkdir(".mcmodtmp")
 
-    print("! Sanning")
+    print("! Scanning")
     for i in files:
         if (".disable" in i) or (".jar" not in i):
             continue
